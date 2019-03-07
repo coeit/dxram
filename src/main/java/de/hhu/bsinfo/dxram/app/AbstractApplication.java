@@ -15,7 +15,7 @@ import de.hhu.bsinfo.dxram.engine.DXRAMVersion;
  * @author Stefan Nothaas, stefan.nothaas@hhu.de, 17.05.17
  */
 public abstract class AbstractApplication extends Thread {
-    private static final Logger LOGGER = LogManager.getFormatterLogger(AbstractApplication.class.getSimpleName());
+    private static final Logger LOGGER = LogManager.getFormatterLogger(AbstractApplication.class);
 
     private DXRAMServiceAccessor m_dxramServiceAccessor;
     private ApplicationCallbackHandler m_callbackHandler;
@@ -61,15 +61,11 @@ public abstract class AbstractApplication extends Thread {
 
         m_callbackHandler.started(this);
 
-        LOGGER.info("Starting '%s' with arguments (%d): %s", getName(), m_args.length, Arrays.toString(m_args));
-
         try {
             main(m_args);
         } catch (final Exception e) {
             LOGGER.info("Exception in application", e);
         }
-
-        LOGGER.info("'%s' finished", getName());
 
         m_callbackHandler.finished(this);
     }

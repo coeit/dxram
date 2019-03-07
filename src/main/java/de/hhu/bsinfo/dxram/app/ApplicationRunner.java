@@ -21,7 +21,7 @@ import de.hhu.bsinfo.dxram.engine.DXRAMVersion;
  * @author Stefan Nothaas, stefan.nothaas@hhu.de, 05.09.18
  */
 public class ApplicationRunner implements ApplicationCallbackHandler {
-    private static final Logger LOGGER = LogManager.getFormatterLogger(ApplicationRunner.class.getSimpleName());
+    private static final Logger LOGGER = LogManager.getFormatterLogger(ApplicationRunner.class);
 
     private final HashMap<String, Class<? extends AbstractApplication>> m_applicationClasses;
     private final DXRAMVersion m_dxramVersion;
@@ -97,6 +97,9 @@ public class ApplicationRunner implements ApplicationCallbackHandler {
         }
 
         app.init(m_dxramServiceAccessor, this, p_args);
+
+        LOGGER.info("Starting %s", app.getApplicationName());
+
         app.start();
 
         return true;
