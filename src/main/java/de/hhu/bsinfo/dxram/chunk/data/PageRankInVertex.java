@@ -101,10 +101,6 @@ public class PageRankInVertex extends AbstractChunk {
         p_exporter.writeDouble(m_tmpPR);
         p_exporter.writeInt(m_outDeg);
         p_exporter.writeInt(m_name);
-        /*for(String s : m_inEdges){
-            p_exporter.writeString(s);
-        }*/
-        //p_exporter.writeIntArray(m_inEdges);
         p_exporter.writeLongArray(m_inEdges);
     }
 
@@ -114,19 +110,11 @@ public class PageRankInVertex extends AbstractChunk {
         m_tmpPR = p_importer.readDouble(m_tmpPR);
         m_outDeg = p_importer.readInt(m_outDeg);
         m_name = p_importer.readInt(m_name);
-        /*for (int i = 0; i < m_inEdges.length; i++) {
-            m_inEdges[i] = p_importer.readString(m_inEdges[i]);
-        }*/
-        //m_inEdges = p_importer.readIntArray(m_inEdges);
         m_inEdges = p_importer.readLongArray(m_inEdges);
     }
 
     @Override
     public int sizeofObject() {
-        //int sum = 0;
-        /*for (String s : m_inEdges){
-            sum += ObjectSizeUtil.sizeofString(s);
-        }*/
         return Double.BYTES * 2 + Integer.BYTES * 2 + ObjectSizeUtil.sizeofLongArray(m_inEdges);
     }
 }

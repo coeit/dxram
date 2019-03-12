@@ -24,7 +24,7 @@ public class JobComponentConfig extends DXRAMModuleConfig {
      * Enable the job component which runs the work stealing worker threads to dispatch jobs
      */
     @Expose
-    private boolean m_enabled = false;
+    private boolean m_enabled = true;
 
     /**
      * Number of worker threads to dispatch jobs to

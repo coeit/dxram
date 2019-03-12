@@ -76,9 +76,6 @@ public class InputJob extends AbstractJob {
                 chunkMap.get(Integer.parseInt(split[1])).addInEdge(correspondingChunkID(Integer.parseInt(split[0]),slaveIDs));
                 //chunkMap.get(Integer.parseInt(split[1])).addInEdge(Integer.parseInt(split[0]));
                 chunkMap.get(Integer.parseInt(split[0])).increment_outDeg();
-
-                //m_vertexCount++;
-
             }
         } catch (IOException e) {
             e.printStackTrace();
